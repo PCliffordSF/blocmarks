@@ -22,3 +22,12 @@ The Cloud9 IDE team
 
 Visit http://docs.c9.io for support, or to learn more about using Cloud9 IDE. 
 To watch some training videos, visit http://www.youtube.com/user/c9ide
+
+
+# to generate the devise views: rails generate devise:views User
+
+# ==> Scopes configuration
+# Turn scoped views on. Before rendering "sessions/new", it will first check for
+# "users/sessions/new". It's turned off by default because it's slower if you
+# are using only default views.
+config.scoped_views = true
