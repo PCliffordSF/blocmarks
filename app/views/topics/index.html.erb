@@ -1,2 +1,26 @@
-<h1>Topics#index</h1>
-<p>Find me in app/views/topics/index.html.erb</p>
+ <h1>All Topics</h1>
+
+ <div class="row">
+   <div class="col-md-8">
+
+     <% @topics.each do |topic| %>
+     
+       <div class="media">
+         <div class="media-body">
+           <h4 class="media-heading">
+             <%= link_to topic.title, topic %>
+             <br/>
+             <small>submitted <%= time_ago_in_words(topic.created_at) %> ago</small>
+             <br>
+             <small><%= link_to "Add a bookmark", new_topic_bookmarks_path(topic), class: 'btn-sm btn-success' %></small>
+           </h4>
+
+
+         </div> <!--end media-body-->
+       </div> <!--end media-->
+     <% end %>
+
+     </br>
+     <%= link_to "Exit", welcome_index_path, class: 'btn btn-warning' %>
+   </div>
+ </div>

@@ -1,2 +1,20 @@
-<h1>Topics#show</h1>
-<p>Find me in app/views/topics/show.html.erb</p>
+
+ <div>
+   <h1><%= @topic.title %></h1><br>
+   <% topic_owner = User.find_by id: @topic.user_id %>
+     <small class="underline">
+       submitted <%= time_ago_in_words(@topic.created_at) %> ago by <%= topic_owner.user_name %>
+     </small>
+     <br></br>
+ </div>
+ <div class="row">
+   <div class="col-md-8">
+     <p><%= @topic.title %></p>
+     <% @topic.bookmarks.each do |bookmark| %>
+        <%= bookmark.url %> <br>
+     <% end %>
+   </div>
+     <div class="col-md-8">
+       <%= link_to "Exit", root_path, class: 'btn btn-warning' %>
+     </div>
+   </div>

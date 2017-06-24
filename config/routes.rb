@@ -1,11 +1,9 @@
 Rails.application.routes.draw do
-  get 'topics/index'
 
-  get 'topics/show'
-
-  get 'topics/new'
-
-  get 'topics/edit'
+  resources :topics  do
+    resource :bookmarks
+  end
+  
 
   devise_for :users, :controllers => { registrations: 'registrations' }
   get 'welcome/index'
