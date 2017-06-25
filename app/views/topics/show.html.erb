@@ -2,19 +2,27 @@
  <div>
    <h1><%= @topic.title %></h1><br>
    <% topic_owner = User.find_by id: @topic.user_id %>
-     <small class="underline">
-       submitted <%= time_ago_in_words(@topic.created_at) %> ago by <%= topic_owner.user_name %>
-     </small>
+
      <br></br>
  </div>
  <div class="row">
    <div class="col-md-8">
-     <p><%= @topic.title %></p>
+     <h3><%= @topic.title %></h3>
+     <small class="underline">
+       submitted <%= time_ago_in_words(@topic.created_at) %> ago by <%= topic_owner.user_name %>
+     </small>
+     <br>
+     <h4>Bookmarks:</h4>
      <% @topic.bookmarks.each do |bookmark| %>
-        <%= bookmark.url %> <br>
+        <%= bookmark.url %> 
+     
+        <br>
      <% end %>
+     <br></br>
    </div>
      <div class="col-md-8">
        <%= link_to "Exit", root_path, class: 'btn btn-warning' %>
+       <%= link_to "Add a bookmark", new_topic_bookmarks_path(@topic), class: 'btn btn-success' %>
+       <%= link_to "Delete Topic", @topic, method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure you want to delete this topic?' } %>
      </div>
    </div>
