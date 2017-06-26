@@ -14,8 +14,6 @@ class BookmarksController < ApplicationController
     def create
         @topic = Topic.find(params[:topic_id])
         @bookmark = @topic.bookmarks.build(url: params[:bookmark][:url])
-        puts '========================'
-        puts params
         
         if @bookmark.save
            flash[:notice] = "Bookmark was added."
@@ -27,12 +25,25 @@ class BookmarksController < ApplicationController
     end
     
     def show
+        @bookmark = Bookmark.find(params[:id])
+        render :show
     end
     
     def edit
+        @bookmark = Bookmark.find(params[:id])
+        render :edit
     end
     
     def update
+        @bookmark = Bookmark.find(params[:id])
+        @bookmark.url = params[:bookmark][:url]
+         if @bookmark.save
+           flash[:notice] = "Bookmark was updated."
+           redirect_to @bookmark
+         else
+           flash.now[:alert] = "There was an error updating the bookmark. Please try again."
+           render :edit
+         end
     end
     
   def destroy

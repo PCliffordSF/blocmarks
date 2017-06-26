@@ -1,0 +1,12 @@
+
+ <div class="row">
+   <div class="col-md-8">
+     <h3><%= @bookmark.url %></h3>
+     <small class="underline">
+       submitted <%= time_ago_in_words(@bookmark.created_at) %> ago 
+     </small>
+     <br>
+     <%= link_to "Edit Bookmark", edit_bookmark_path(@bookmark.id), class: 'btn btn-success' %>
+     <br>
+   </div>
+ </div>

@@ -14,8 +14,9 @@
      <br>
      <h4>Bookmarks:</h4>
      <% @topic.bookmarks.each do |bookmark| %>
-        <%= bookmark.url %> 
-     
+        <%= link_to bookmark.url, bookmark_path(bookmark) %> 
+        <span> - </span>
+        <%= link_to "Delete", destroy_bookmark_topic_path(bookmark, @topic.id), method: :delete, class: 'danger', data: { confirm: 'Are you sure you want to delete this bookmark?' } %>
         <br>
      <% end %>
      <br></br>

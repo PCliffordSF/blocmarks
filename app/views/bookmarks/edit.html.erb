@@ -1,0 +1,14 @@
+ <%= form_for @bookmark do |f| %>
+ <div class="row">
+   <div class="col-md-8">
+       <div class="form-group">
+         <%= f.label :url %>
+         <%= f.text_field :url, class: 'form-control', placeholder: "Enter the url of the bookmark" %>
+       </div>
+       <div class="form-group">
+         <%= f.submit "Update", class: 'btn btn-success' %>
+         <%= link_to "Exit", root_path, class: 'btn btn-warning' %>
+       </div>
+   </div>
+
+ <% end %>
