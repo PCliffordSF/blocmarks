@@ -6,7 +6,7 @@ RSpec.describe TopicsController, type: :controller do
    let(:topic) {Topic.create(user_id: user.id, title: 'Title') }
    
    3.times do
-      let(:bookmarks) {Event.create(url: "u@rl", topic_id: topic.id)} 
+      let(:bookmarks) {Bookmark.create(url: "u@rl", topic_id: topic.id)} 
    end
    
   before :each do 
@@ -42,6 +42,11 @@ RSpec.describe TopicsController, type: :controller do
   end
   
   describe "POST #create" do
+    
+    it "increases the number of Topics by 1" do
+      expect{ post :create, user_id: user.id, topic: {title: "Title"} }.to change(Topic, :count).by(1)
+    end
+    
       it "returns http redirect" do
         post :create, topic: {title: 'Title'}
         expect(response).to redirect_to(topic_path(1))
@@ -49,6 +54,12 @@ RSpec.describe TopicsController, type: :controller do
     end
     
   describe "DELETE #destroy" do
+    
+    it "deletes the Topic" do
+      topic
+      expect{ delete :destroy, :id => topic.id}.to change(Topic, :count).by(-1)
+    end
+    
       it "returns http redirect" do
         delete :destroy, {id: topic.id}
         expect(response).to redirect_to(topics_path)

@@ -6,7 +6,7 @@ RSpec.describe Topic, type: :model do
    let(:topic) {Topic.create(user_id: user.id, title: 'Title') }
    
    3.times do
-      let(:bookmarks) {Event.create(url: "u@rl", topic_id: topic.id)} 
+      let(:bookmarks) {Bookmark.create(url: "u@rl", topic_id: topic.id)} 
    end
     
     

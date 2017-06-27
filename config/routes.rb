@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     end
   end
   
-  resources :bookmarks
+  resources :bookmarks, except: [:index]
   
 
   devise_for :users, :controllers => { registrations: 'registrations' }

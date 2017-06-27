@@ -1,10 +1,5 @@
 class BookmarksController < ApplicationController
-    
-    def index
-        @bookmarks = Bookmarks.all
-        render :index
-    end
-    
+
     def new
         @topic = Topic.find(params[:topic_id])
         @bookmark = Bookmark.new
