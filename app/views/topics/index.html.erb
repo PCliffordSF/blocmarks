@@ -8,11 +8,18 @@
        <div class="media">
          <div class="media-body">
            <h4 class="media-heading">
-             <%= link_to topic.title, topic %>
-             <br/>
+             <%= link_to topic.title, topic %><br>
              <small>submitted <%= time_ago_in_words(topic.created_at) %> ago</small>
              <br>
              <small><%= link_to "Add a bookmark", new_topic_bookmarks_path(topic), class: 'btn-sm btn-success' %></small>
+             <br></br>
+             <% topic.bookmarks.each do |bookmark| %>
+              <%= link_to bookmark.url, "http://#{bookmark.url}" %>
+              <small><%= link_to "Delete Bookmark", {controller: 'topics', action: 'destroy_bookmark', id: topic.id, bookmark_id: bookmark.id}, method: :delete, class: 'danger', data: { confirm: 'Are you sure you want to delete this bookmark?' } %></small>
+              <% end %>
+             <br></br>
+            
+
            </h4>
 
 
