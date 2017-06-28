@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   resources :bookmarks, except: [:index]
   
 
-  devise_for :users, :controllers => { registrations: 'registrations' }
+  devise_for :users
   get 'welcome/index'
 
   get 'welcome/about'
