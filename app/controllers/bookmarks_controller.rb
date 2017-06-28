@@ -1,6 +1,4 @@
 class BookmarksController < ApplicationController
-    
-    authorize Bookmark
 
     def new
         @topic = Topic.find(params[:topic_id])
@@ -11,6 +9,7 @@ class BookmarksController < ApplicationController
     def create
         @topic = Topic.find(params[:topic_id])
         @bookmark = @topic.bookmarks.build(url: params[:bookmark][:url])
+        @bookmark.user_id = current_user.id
         
         if @bookmark.save
            flash[:notice] = "Bookmark was added."
