@@ -15,8 +15,10 @@
              <br></br>
              <% topic.bookmarks.each do |bookmark| %>
               <%= link_to bookmark.url, "http://#{bookmark.url}" %>
-              <small><%= link_to "Delete Bookmark", {controller: 'topics', action: 'destroy_bookmark', id: topic.id, bookmark_id: bookmark.id}, method: :delete, class: 'danger', data: { confirm: 'Are you sure you want to delete this bookmark?' } %></small>
+              <% if policy(bookmark).destroy? %>
+               <small><%= link_to "Delete Bookmark", {controller: 'topics', action: 'destroy_bookmark', id: topic.id, bookmark_id: bookmark.id}, method: :delete, class: 'danger', data: { confirm: 'Are you sure you want to delete this bookmark?' } %></small>
               <% end %>
+             <% end %>
              <br></br>
             
 
