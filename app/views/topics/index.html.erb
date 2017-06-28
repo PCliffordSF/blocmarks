@@ -14,7 +14,13 @@
              <br>
              <small><%= link_to "Add a bookmark", new_topic_bookmarks_path(topic), class: 'btn-sm btn-success' %></small>
            </h4>
-           
+           <% topic.bookmarks.each do |bookmark| %>
+            <%= bookmark.url %> 
+            <% if policy(bookmark).destroy? %>
+            <%= link_to "Delete Bookmark", {controller: 'topics', action: 'destroy_bookmark', id: topic.id, bookmark_id: bookmark.id}, method: :delete, class: 'danger', data: { confirm: 'Are you sure you want to delete this bookmark?' } %>
+            <% end %>
+            <br>
+            <% end %>
 
          </div> <!--end media-body-->
        </div> <!--end media-->
