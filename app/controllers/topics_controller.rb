@@ -49,11 +49,9 @@ class TopicsController < ApplicationController
   end
   
   def destroy_bookmark 
-    puts '==========================='
-    puts params
-    puts '========================================'
+
     @bookmark = Bookmark.find(params[:bookmark_id])
-     
+     authorize @bookmark
     if @bookmark.destroy
       flash[:notice] = "\"#{@bookmark.url}\" was deleted successfully."
       redirect_to topic_path(params[:id])
