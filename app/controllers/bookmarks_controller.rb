@@ -33,9 +33,11 @@ class BookmarksController < ApplicationController
     
     def update
         @bookmark = Bookmark.find(params[:id])
-        @bookmark.url = params[:bookmark][:url]
+        
         
         authorize @Bookmark
+        @bookmark.url = params[:bookmark][:url]
+        @bookmark.user_name = current_user.user_name
         
          if @bookmark.save
            flash[:notice] = "Bookmark was updated."
