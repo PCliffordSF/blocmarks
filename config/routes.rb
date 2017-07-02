@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'users/show'
+
   get 'likes/index'
 
   resources :topics  do
@@ -13,9 +15,10 @@ Rails.application.routes.draw do
     resources :likes, only: [:index, :create, :destroy]
   end
 
-    devise_for :users, :controllers => { registrations: 'registrations' }
+  devise_for :users, :controllers => { registrations: 'registrations' }
+  resources :users, only: [:show]
+  
   get 'welcome/index'
-
   get 'welcome/about'
   
   root({to: 'welcome#index'})

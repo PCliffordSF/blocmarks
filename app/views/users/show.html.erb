@@ -1,0 +1,39 @@
+
+ <div>
+   <h2><%= current_user.user_name %></h2><br>
+     <small class="underline">
+       member since <%= distance_of_time_in_words_to_now(current_user.created_at) %>
+     </small>
+     <br></br>
+ </div>
+ <div class="row">
+   <div class="col-md-8">
+     <br>
+        <% Topic.all.each do |topic| %>
+        
+            <h4 class="text-center">My Blockmarks</h4>
+            <h3><%= topic.title %></h3>
+            
+            <% @user_bookmarks.where("topic_id = ?", topic.id).each do |user_bookmark| %>
+                <%= user_bookmark.url %>
+            <% end %>
+            
+            <br></br>
+            
+            <h4 class="text-center">My liked Bookmarks</h4>
+            <h3><%= topic.title %></h3>
+            
+            <% #@liked_bookarks.where("topic_id = ?", topic.id).each do |liked_bookark| %>
+               <%= #liked_bookark.url %>
+            <% #end %>
+
+            <br></br>
+            <p>==============================================</p>
+        <% end %>
+     <br></br>
+   </div>
+     <div class="col-md-8">
+       <%= link_to "Exit", root_path, class: 'btn btn-warning' %>
+     </div>
+   </div>
+

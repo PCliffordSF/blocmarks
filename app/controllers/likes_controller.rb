@@ -8,7 +8,6 @@ class LikesController < ApplicationController
      
      authorize like
      
-     
      if like.save
       if current_user.id == @bookmark.user_id 
             flash[:notice] = "You better like your own bookmark!!!"
