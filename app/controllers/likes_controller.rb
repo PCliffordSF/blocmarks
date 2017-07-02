@@ -8,9 +8,16 @@ class LikesController < ApplicationController
      
      authorize like
      
+     
      if like.save
-       flash[:notice] = "You liked this bookmark!!!"
-       redirect_to(:back)
+      if current_user.id == @bookmark.user_id 
+            flash[:notice] = "You better like your own bookmark!!!"
+            redirect_to(:back)
+      else
+            flash[:notice] = "You liked this bookmark!!!"
+            redirect_to(:back)
+      end
+      
     else
        flash.now[:alert] = "There was an error liking this bookmark."
        redirect_to(:back)
@@ -23,9 +30,15 @@ class LikesController < ApplicationController
 
      authorize like
      if like.destroy
-       flash[:notice] = "You no longer like this bookmark!!!"
-       redirect_to(:back)
-    else
+        if current_user.id == @bookmark.user_id 
+            flash[:notice] = "You just unliked your own bookmark."
+            redirect_to(:back)
+        
+        else
+            flash[:notice] = "You no longer like this bookmark!!!"
+            redirect_to(:back)
+        end
+     else
        flash.now[:alert] = "There was an error unliking this bookmark."
        redirect_to(:back)
      end
