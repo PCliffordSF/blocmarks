@@ -55,18 +55,17 @@ class BookmarksController < ApplicationController
      authorize @bookmark
      
      if @bookmark.destroy
+         puts params
+         puts '==============================='
       flash[:notice] = "\"#{@bookmark.url}\" was deleted successfully."
-      redirect_to topic_path(params[:topic_id])
+      redirect_to(:back)
      else
       flash.now[:alert] = "There was an error deleting the bookmark."
-      redirect_to topic_path(params[:topic_id])
+      redirect_to(:back)
      end
   end
   
   def user_not_authorized
-      puts '------------------------------'
-      puts params
-      puts '+++++++++++++++++++++++++++++++++'
     flash[:alert] = "You are not cool enough to do this - go back from whence you came."
     redirect_to(topic_path(params[:topic_id]))
   end

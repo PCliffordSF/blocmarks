@@ -1,8 +1,8 @@
 
  <div>
-   <h2><%= current_user.user_name %></h2><br>
+   <h2><%= current_user.user_name %></h2>
      <small class="underline">
-       member since <%= distance_of_time_in_words_to_now(current_user.created_at) %>
+       member since <%= current_user.created_at.strftime("%B %d, %Y") %>
      </small>
      <br></br>
  </div>
@@ -10,24 +10,21 @@
    <div class="col-md-8">
      <br>
         <% Topic.all.each do |topic| %>
-        
-            <h4 class="text-center">My Blockmarks</h4>
             <h3><%= topic.title %></h3>
+            <h4 class="text-center">My Blockmarks:</h4>
+                <% @user_bookmarks.where("topic_id = ?", topic.id).each do |user_bookmark| %>
+                    <%= user_bookmark.url %>
+                    <%= link_to "Delete Bookmark", topic_bookmarks_path(topic_id: topic.id, id: user_bookmark.id), method: :delete, class: 'danger', data: { confirm: 'Are you sure you want to delete this bookmark?' } %>   
+                <% end %>
+            <br></br>
+            <h4 class="text-center">My Liked Blockmarks:</h4>
             
-            <% @user_bookmarks.where("topic_id = ?", topic.id).each do |user_bookmark| %>
-                <%= user_bookmark.url %>
+            <% @liked_bookmarks.each do |liked_bookmark| %>
+                <% if liked_bookmark.topic_id == topic.id %>
+                    <%= liked_bookmark.url %>
+                    <%= render partial: 'likes/like', locals: { bookmark: liked_bookmark } %>
+                <% end %>
             <% end %>
-            
-            <br></br>
-            
-            <h4 class="text-center">My liked Bookmarks</h4>
-            <h3><%= topic.title %></h3>
-            
-            <% #@liked_bookarks.where("topic_id = ?", topic.id).each do |liked_bookark| %>
-               <%= #liked_bookark.url %>
-            <% #end %>
-
-            <br></br>
             <p>==============================================</p>
         <% end %>
      <br></br>
