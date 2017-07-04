@@ -31,3 +31,9 @@ To watch some training videos, visit http://www.youtube.com/user/c9ide
 # "users/sessions/new". It's turned off by default because it's slower if you
 # are using only default views.
 config.scoped_views = true
+
+testing with rspec blog
+https://www.thunderboltlabs.com/blog/2013/03/27/testing-pundit-policies-with-rspec/
+
+pundit matchers
+https://github.com/chrisalley/pundit-matchers

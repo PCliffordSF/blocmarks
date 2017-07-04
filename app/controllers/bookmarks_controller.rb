@@ -34,7 +34,6 @@ class BookmarksController < ApplicationController
     def update
         @bookmark = Bookmark.find(params[:id])
         
-        
         authorize @Bookmark
         @bookmark.url = params[:bookmark][:url]
         @bookmark.user_name = current_user.user_name
@@ -55,8 +54,6 @@ class BookmarksController < ApplicationController
      authorize @bookmark
      
      if @bookmark.destroy
-         puts params
-         puts '==============================='
       flash[:notice] = "\"#{@bookmark.url}\" was deleted successfully."
       redirect_to(:back)
      else

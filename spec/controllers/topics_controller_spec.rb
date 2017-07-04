@@ -4,10 +4,8 @@ RSpec.describe TopicsController, type: :controller do
   
    let(:user) {User.create(email: "test@mail.com", password: "password", user_name: "username", confirmed_at: Time.now) }
    let(:topic) {Topic.create(user_id: user.id, title: 'Title') }
-   
-   3.times do
-      let(:bookmarks) {Bookmark.create(url: "u@rl", topic_id: topic.id)} 
-   end
+   let(:bookmark) {Bookmark.create(url: "u@rl", topic_id: topic.id, user_id: user.id)} 
+   let(:like) {Like.create(bookmark_id: bookmark.id, user_id: user.id)}
    
   before :each do 
     sign_in user 

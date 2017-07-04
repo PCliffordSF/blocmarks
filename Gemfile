@@ -34,5 +34,6 @@
    gem 'faker'
    gem 'factory_girl_rails'
    gem 'pry-rails'
+   gem 'pundit-matchers', '~> 1.3.0'
  end
 
