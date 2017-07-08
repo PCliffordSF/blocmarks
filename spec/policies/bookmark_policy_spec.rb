@@ -9,6 +9,7 @@ describe BookmarkPolicy do
     let(:bookmark) {Bookmark.create(user_id: user.id) }
     
     it { is_expected.to permit_actions([:new, :create, :show, :edit, :update, :destroy]) }
+    it { is_expected.to forbid_action([:index]) }
        
    end
    
@@ -18,7 +19,7 @@ describe BookmarkPolicy do
     let(:topic) {Topic.create }
     let(:bookmark) {Bookmark.create }
     
-    it { is_expected.to forbid_actions([:new, :create, :show, :edit, :update, :destroy]) }
+    it { is_expected.to forbid_actions([:new, :create, :show, :edit, :update, :destroy, :index]) }
        
    end
    
@@ -28,10 +29,8 @@ describe BookmarkPolicy do
     let(:topic) {Topic.create }
     let(:bookmark) {Bookmark.create(user_id: another_user_id) }
     
-    it { is_expected.to forbid_actions([:edit, :update, :destroy]) }
     it { is_expected.to permit_actions([:new, :create, :show]) }
+    it { is_expected.to forbid_actions([:edit, :update, :destroy, :index]) }
        
    end
-
-    
 end

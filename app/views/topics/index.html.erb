@@ -21,7 +21,9 @@
              <% else %>
              <small>Created by <%= bookmark.user_name %></small>
              <% end %>
+             <% if bookmark.user_id != current_user.id %>
               <%= render partial: 'likes/like', locals: { bookmark: bookmark } %>
+             <% end %>
              <br>
              
             <% end %>
