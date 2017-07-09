@@ -1,6 +1,9 @@
 
  <div class="row">
    <div class="col-md-8">
+    <% @img_url = '"' +  @preview + '"'  %>
+    <%= @img_url %>
+    <img alt="Icon" class="menu_icon" src=" + @img_url + "/>
      <h3><%= @bookmark.url %></h3>
      <small class="underline">
        submitted <%= time_ago_in_words(@bookmark.created_at) %> ago 

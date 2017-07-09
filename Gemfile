@@ -22,6 +22,8 @@
  gem 'figaro'
  gem 'devise'
  gem 'pundit'
+ gem 'querystring'
+ gem 'embedly'
  #gem 'chartkick'
  #gem 'groupdate'
  

@@ -23,6 +23,9 @@ class BookmarksController < ApplicationController
     
     def show
         @bookmark = Bookmark.find(params[:id])
+        @preview = Bookmark.get_preview(@bookmark.url)
+        puts 'previewpreviewpreviewpreview'
+        puts @preview
         render :show
     end
     

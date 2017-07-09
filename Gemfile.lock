@@ -64,6 +64,10 @@ GEM
       responders
       warden (~> 1.2.3)
     diff-lcs (1.3)
+    embedly (1.9.1)
+      json
+      oauth
+      querystring
     erubis (2.7.0)
     execjs (2.7.0)
     factory_girl (4.8.0)
@@ -95,6 +99,7 @@ GEM
     minitest (5.10.1)
     nokogiri (1.7.0.1)
       mini_portile2 (~> 2.1.0)
+    oauth (0.5.3)
     orm_adapter (0.5.0)
     pg (0.21.0)
     pry (0.10.4)
@@ -108,6 +113,7 @@ GEM
     pundit-matchers (1.3.0)
       pundit (~> 1.1, >= 1.1.0)
       rspec-rails (>= 3.0.0)
+    querystring (0.1.0)
     rack (1.6.5)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -211,6 +217,7 @@ DEPENDENCIES
   byebug
   coffee-rails (~> 4.1.0)
   devise
+  embedly
   factory_girl_rails
   faker
   figaro
@@ -219,6 +226,7 @@ DEPENDENCIES
   pry-rails
   pundit
   pundit-matchers (~> 1.3.0)
+  querystring
   rails (= 4.2.5)
   rails_12factor
   rspec-rails
