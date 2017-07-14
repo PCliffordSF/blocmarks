@@ -1,9 +1,11 @@
 
  <div class="row">
    <div class="col-md-8">
-    <img alt="Icon" class="menu_icon preview" src="<%=@preview %>"/>
-    <iframe src="https://www.espn.com"></iframe>
-     <small class="underline">
+    <% if @preview.include? "<iframe" %>
+    <%= @preview %>
+    <% else %>
+     <img alt="Icon" class="menu_icon preview" src="<%= @preview %>"/>
+    <% end %>
        submitted <%= time_ago_in_words(@bookmark.created_at) %> ago 
      </small>
      <br>

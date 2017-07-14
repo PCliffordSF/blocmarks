@@ -36,8 +36,7 @@ class BookmarksController < ApplicationController
     
     def update
         @bookmark = Bookmark.find(params[:id])
-        
-        authorize @Bookmark
+        authorize @bookmark
         @bookmark.url = params[:bookmark][:url]
         @bookmark.user_name = current_user.user_name
         
