@@ -1,11 +1,14 @@
 
  <div class="row">
    <div class="col-md-8">
-    <% if @preview.include? "<iframe" %>
-    <%= @preview %>
-    <% else %>
-     <img alt="Icon" class="menu_icon preview" src="<%= @preview %>"/>
+    <% unless !@bookmark.i_frame.nil? %>
+      <%= raw @bookmark.i_frame %>
     <% end %>
+    <% if @bookmark.i_frame.nil? && @bookmark.img_url %>
+     <img alt="Icon" class="menu_icon preview" src="<%= @bookmark.img_url %>"/>
+    <% end %>
+    <br/>
+     <%= @bookmark.url %>
        submitted <%= time_ago_in_words(@bookmark.created_at) %> ago 
      </small>
      <br>

@@ -24,8 +24,6 @@ class BookmarksController < ApplicationController
     def show
         @bookmark = Bookmark.find(params[:id])
         @preview = Bookmark.get_preview(@bookmark.url)
-        puts 'previewpreviewpreviewpreview'
-        puts @preview
         render :show
     end
     
@@ -40,6 +38,11 @@ class BookmarksController < ApplicationController
         @bookmark.url = params[:bookmark][:url]
         @bookmark.user_name = current_user.user_name
         
+        @embedly_hash = Bookmark.get_preview(@bookmark.url)
+
+        @bookmark.img_url = @embedly_hash[:thumbnail_url]
+        @bookmark.i_frame = @embedly_hash[:html]
+
          if @bookmark.save
            flash[:notice] = "Bookmark was updated."
            redirect_to @bookmark
@@ -51,8 +54,7 @@ class BookmarksController < ApplicationController
     
   def destroy
      @bookmark = Bookmark.find(params[:id])
-
-
+     
      authorize @bookmark
      
      if @bookmark.destroy
