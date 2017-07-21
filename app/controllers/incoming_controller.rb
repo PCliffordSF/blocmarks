@@ -17,19 +17,21 @@ class IncomingController < ApplicationController
       @Bookmark_url =  params["body-plain"]
       
       if @user.nil?
-        @user = User.create(email: params["sender"], password: params["sender"])
+        @user = User.new(email: params["sender"], password: params["sender"])
+        @user.save
       end
       puts 'useruseruseruseruseruseruseruseruseruseruseruser'
-      puts @user[id]
+      puts @user
       
       
       
       if @topic.nil?
-        @topic = Topic.create(title: params["subject"], user_id:  @user[id])
+        @topic = Topic.new(title: params["subject"], user_id:  @user[id])
+        @topic.save
       end
       
       puts 'topictopictopictopictopictopictopictopictopictopictopictopictopictopictopic'
-      puts @topic[id]
+      puts @topic
       
       
       @bookmark = Bookmark.create(url: @bookmark_url, topic_id: @topic[id], user_id: @user[id])
