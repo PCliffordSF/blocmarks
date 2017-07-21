@@ -6,7 +6,9 @@ class IncomingController < ApplicationController
   def create
     # Take a look at these in your server logs
     # to get a sense of what you're dealing with.
+    puts '0000000000000000000000000000000000000000000000000000000000'
     puts "INCOMING PARAMS HERE: #{params}"
+    puts params.to_yaml
 
     # You put the message-splitting and business
     # magic here.
