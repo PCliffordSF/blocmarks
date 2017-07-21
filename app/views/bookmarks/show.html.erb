@@ -1,11 +1,12 @@
 
  <div class="row">
-   <div class="col-md-8">
-    <% unless !@bookmark.i_frame.nil? %>
+   <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6">
+    <% if !@bookmark.i_frame.nil? %>
       <%= raw @bookmark.i_frame %>
-    <% end %>
-    <% if @bookmark.i_frame.nil? && @bookmark.img_url %>
-     <img alt="Icon" class="menu_icon preview" src="<%= @bookmark.img_url %>"/>
+    <% elsif @bookmark.i_frame.nil? && @bookmark.img_url %>
+     <img alt="Icon" class="img-responsive" src="<%= @bookmark.img_url %>"/>
+    <% else %>
+     <%= link_to image_tag("kitten.jpg", alt: "Cute Kitten", class: "img-responsive") %>
     <% end %>
     <br/>
      <%= @bookmark.url %>
