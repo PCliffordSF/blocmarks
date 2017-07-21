@@ -26,7 +26,7 @@ class IncomingController < ApplicationController
       
       
       if @topic.nil?
-        @topic = Topic.new(title: params["subject"], user_id:  @user[id])
+        @topic = Topic.new(title: params["subject"])
         @topic.save
       end
       
@@ -34,7 +34,8 @@ class IncomingController < ApplicationController
       puts @topic
       
       
-      @bookmark = Bookmark.create(url: @bookmark_url, topic_id: @topic[id], user_id: @user[id])
+      @bookmark = Bookmark.new(url: @bookmark_url)
+      @bookmark.save
       puts 'bookmarkbookmarkbookmarkbookmarkbookmarkbookmarkbookmarkbookmarkbookmarkbookmark'
       puts @bookmark
   
