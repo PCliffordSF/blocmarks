@@ -37,7 +37,7 @@ class IncomingController < ApplicationController
       
       @bookmark = Bookmark.new(url: @bookmark_url)
       @bookmark[topic_id] = @topic[id]
-      @bookmark[user_id] =  bookmark[id]
+      @bookmark[user_id] =  @user[id]
       @bookmark.save
       puts 'bookmarkbookmarkbookmarkbookmarkbookmarkbookmarkbookmarkbookmarkbookmarkbookmark'
       puts @bookmark
