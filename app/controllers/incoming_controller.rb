@@ -25,14 +25,14 @@ class IncomingController < ApplicationController
       
       
       if @topic.nil?
-        @topic = Topic.create(title: params["subject"], user_id:  @user.id)
+        @topic = Topic.create(title: params["subject"], user_id:  @user[id])
       end
       
       puts 'topictopictopictopictopictopictopictopictopictopictopictopictopictopictopic'
       puts @topic
       
       
-      @bookmark = Bookmark.create(url: @bookmark_url, topic_id: @topic.id, user_id: @user.id)
+      @bookmark = Bookmark.create(url: @bookmark_url, topic_id: @topic[id], user_id: @user[id])
       puts 'bookmarkbookmarkbookmarkbookmarkbookmarkbookmarkbookmarkbookmarkbookmarkbookmark'
       puts @bookmark
   
