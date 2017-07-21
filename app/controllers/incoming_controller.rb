@@ -13,21 +13,21 @@ class IncomingController < ApplicationController
     # You put the message-splitting and business
     # magic here.
       @user = User.where("email = ?", params["sender"])
-      @topic = Topic.where("subject = ?", params["subject"])
+      @topic = Topic.where("title = ?", params["subject"])
       @Bookmark_url =  params["body-plain"]
       
       if @user.nil?
         @user = User.create(email: params["sender"], password: params["sender"], user_name: params["sender"])
       end
       puts 'useruseruseruseruseruseruseruseruseruseruseruser'
-      puts @user
+      puts @user.user_name
       
       if @topic.nil?
         @topic = Topic.create(title: params["subject"], user_id:  @user.id)
       end
       
       puts 'topictopictopictopictopictopictopictopictopictopictopictopictopictopictopic'
-      puts @topic
+      puts @topic.title
       
       
       @bookmark = Bookmark.create(url: @bookmark_url, topic_id: @topic.id, user_id: @user.id)
