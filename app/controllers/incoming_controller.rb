@@ -13,7 +13,7 @@ class IncomingController < ApplicationController
     # You put the message-splitting and business
     # magic here.
       @user = User.where("email = ?", params["sender"])
-      @topic = Topic.find("subject = ?", params["subject"])
+      @topic = Topic.where("subject = ?", params["subject"])
       @Bookmark_url =  params["body-plain"]
       
       if @user.nil?
