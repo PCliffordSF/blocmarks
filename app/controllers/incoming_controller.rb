@@ -20,7 +20,7 @@ class IncomingController < ApplicationController
         @user = User.create(email: params["sender"], password: params["sender"])
       end
       puts 'useruseruseruseruseruseruseruseruseruseruseruser'
-      puts @user
+      puts @user[id]
       
       
       
@@ -29,7 +29,7 @@ class IncomingController < ApplicationController
       end
       
       puts 'topictopictopictopictopictopictopictopictopictopictopictopictopictopictopic'
-      puts @topic
+      puts @topic[id]
       
       
       @bookmark = Bookmark.create(url: @bookmark_url, topic_id: @topic[id], user_id: @user[id])
