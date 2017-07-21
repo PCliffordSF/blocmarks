@@ -20,7 +20,7 @@ class IncomingController < ApplicationController
         @user = User.create(email: params["sender"], password: params["sender"], user_name: params["sender"])
       end
       puts 'useruseruseruseruseruseruseruseruseruseruseruser'
-      puts @user.user_name
+      puts @user.email
       
       if @topic.nil?
         @topic = Topic.create(title: params["subject"], user_id:  @user.id)
