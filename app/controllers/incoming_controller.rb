@@ -17,10 +17,12 @@ class IncomingController < ApplicationController
       @Bookmark_url =  params["body-plain"]
       
       if @user.nil?
-        @user = User.create(email: params["sender"], password: params["sender"], user_name: params["sender"])
+        @user = User.create(email: params["sender"], password: params["sender"])
       end
       puts 'useruseruseruseruseruseruseruseruseruseruseruser'
       puts @user.email
+      
+      
       
       if @topic.nil?
         @topic = Topic.create(title: params["subject"], user_id:  @user.id)
