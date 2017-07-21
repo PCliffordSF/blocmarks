@@ -19,13 +19,20 @@ class IncomingController < ApplicationController
       if @user.nil?
         @user = User.create(email: params["sender"], password: params["sender"], user_name: params["sender"])
       end
+      puts 'useruseruseruseruseruseruseruseruseruseruseruser'
+      puts @user
       
       if @topic.nil?
         @topic = Topic.create(title: params["subject"], user_id:  @user.id)
       end
-
-      @bookmark = @topic.bookmark.create(url: @bookmark_url)
-
+      
+      puts 'topictopictopictopictopictopictopictopictopictopictopictopictopictopictopic'
+      puts @topic
+      
+      
+      @bookmark = Bookmark.create(url: @bookmark_url, topic_id: @topic.id, user_id: @user.id)
+      puts 'bookmarkbookmarkbookmarkbookmarkbookmarkbookmarkbookmarkbookmarkbookmarkbookmark'
+      puts @bookmark
   
     # Assuming all went well.
     head 200
