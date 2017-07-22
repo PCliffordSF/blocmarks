@@ -16,7 +16,7 @@ class IncomingController < ApplicationController
       @topic = Topic.where("title = ?", params["subject"])
       @Bookmark_url =  params["body-plain"]
       
-      if @user.nil?
+      if @user.empty?
         @user = User.new
         @user.email = params["sender"]
         @user.password = params["sender"]
@@ -27,7 +27,7 @@ class IncomingController < ApplicationController
       
       
       
-      if @topic.nil?
+      if @topic.empty?
         @topic = Topic.new
         @topic.title = params["subject"]
         @topicuser_id = @user.id
