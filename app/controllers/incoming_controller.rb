@@ -30,7 +30,7 @@ class IncomingController < ApplicationController
       if @topic.empty?
         @topic = Topic.new
         @topic.title = params["subject"]
-        @topicuser_id = @user.id
+        @topic.user_id = @user[:id]
         @topic.save
       end
       
