@@ -17,27 +17,31 @@ class IncomingController < ApplicationController
       @Bookmark_url =  params["body-plain"]
       
       if @user.nil?
-        @user = User.new(email: params["sender"], password: params["sender"])
+        @user = User.new
+        @user.email = params["sender"]
+        @user.password = params["sender"]
         @user.save
       end
       puts 'useruseruseruseruseruseruseruseruseruseruseruser'
-      puts @user
+      puts @user.to_yaml
       
       
       
       if @topic.nil?
-        @topic = Topic.new(title: params["subject"])
-        @topic[:user_id] = @user[:id]
+        @topic = Topic.new
+        @topic.title = params["subject"]
+        @topicuser_id = @user.id
         @topic.save
       end
       
       puts 'topictopictopictopictopictopictopictopictopictopictopictopictopictopictopic'
-      puts @topic[:title]
+      puts @topic
       
       
-      @bookmark = Bookmark.new(url: @bookmark_url)
-      @bookmark[:topic_id] = @topic[:id]
-      @bookmark[:user_id] =  @user[:id]
+      @bookmark = Bookmark.new
+      @bookmark.url = @bookmark_url
+      @bookmark.topic_id = @topic.id
+      @bookmark.user_id =  @user.id
       @bookmark.save
       puts 'bookmarkbookmarkbookmarkbookmarkbookmarkbookmarkbookmarkbookmarkbookmarkbookmark'
       puts @bookmark
