@@ -21,7 +21,7 @@ class IncomingController < ApplicationController
         @user.save
       end
       puts 'useruseruseruseruseruseruseruseruseruseruseruser'
-      puts @user[:id]
+      puts @user
       
       
       
