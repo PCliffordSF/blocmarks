@@ -21,7 +21,7 @@ class IncomingController < ApplicationController
         @user.save
       end
       puts 'useruseruseruseruseruseruseruseruseruseruseruser'
-      puts @user
+      puts @user[:id]
       
       
       
@@ -32,12 +32,12 @@ class IncomingController < ApplicationController
       end
       
       puts 'topictopictopictopictopictopictopictopictopictopictopictopictopictopictopic'
-      puts @topic
+      puts @topic[:title]
       
       
       @bookmark = Bookmark.new(url: @bookmark_url)
-      @bookmark.topic_id = @topic.id
-      @bookmark.user_id =  @user.id
+      @bookmark[:topic_id] = @topic[:id]
+      @bookmark[:user_id] =  @user[:id]
       @bookmark.save
       puts 'bookmarkbookmarkbookmarkbookmarkbookmarkbookmarkbookmarkbookmarkbookmarkbookmark'
       puts @bookmark
