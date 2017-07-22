@@ -23,7 +23,7 @@ class IncomingController < ApplicationController
         @user.save
       end
       puts 'useruseruseruseruseruseruseruseruseruseruseruser'
-      puts @user.to_yaml
+      puts @user.inspect
       
       
       
@@ -35,7 +35,7 @@ class IncomingController < ApplicationController
       end
       
       puts 'topictopictopictopictopictopictopictopictopictopictopictopictopictopictopic'
-      puts @topic
+      puts @topic.inspect
       
       
       @bookmark = Bookmark.new
