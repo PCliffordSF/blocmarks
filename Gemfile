@@ -24,6 +24,7 @@
  gem 'pundit'
  gem 'querystring'
  gem 'embedly'
+ gem 'haml'
  #gem 'chartkick'
  #gem 'groupdate'
  

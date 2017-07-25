@@ -1,0 +1,9 @@
+= form_for [topic, bookmark] do |f|
+  .row
+    .col-md-8
+      .form-group
+        = f.label :url
+        = f.text_field :url, class: 'form-control', placeholder: "Enter the url of the bookmark"
+      .form-group
+        = f.submit "Save", class: 'btn btn-success'
+        = link_to "Exit", root_path, class: 'btn btn-warning'

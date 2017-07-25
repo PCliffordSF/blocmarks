@@ -1,0 +1,10 @@
+.row
+  %p 
+    Create a new Bookmark for: 
+    %small
+      = @topic.title 
+  
+.row
+  .col-md-8
+    .col-md-8
+      = render partial: 'form', locals: { topic: @topic, bookmark: @bookmark }
