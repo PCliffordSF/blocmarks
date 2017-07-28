@@ -1,0 +1,14 @@
+%h1
+  Create a new Topic
+ 
+.row
+  .col-md-8
+    = form_for @topic do |f|
+      .form-group
+        = f.label :title
+        = f.text_field :title, class: 'form-control', placeholder: "Name of the Topic"
+      .form-group
+        = f.submit "Save", class: 'btn btn-success'
+        = link_to "Exit", root_path, class: 'btn btn-warning'
+  
+

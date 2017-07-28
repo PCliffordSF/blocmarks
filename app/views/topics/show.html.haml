@@ -1,0 +1,42 @@
+.row
+  .h1
+    = @topic.title
+    .br
+    - topic_owner = User.find_by id: @topic.user_id
+
+%br
+  .row
+    .col-md-8
+      %h3
+        = @topic.title 
+        %small.info  
+        = link_to "Show All Topics", topics_path, class: 'info'
+   
+      .underline
+        submitted
+        = time_ago_in_words(@topic.created_at) 
+        ago by
+        = topic_owner.user_name
+      %br
+      - if @topic.bookmarks.empty?
+        %h4
+          There are no Bookmarks for this topic
+      - else
+        %h4
+          Bookmarks:
+      = @topic.bookmarks.each do |bookmark| 
+        = link_to bookmark.url, bookmark_path(bookmark) 
+      
+        - if policy(bookmark).destroy?
+          <span> - </span>
+          = link_to "Delete Bookmark", topic_bookmarks_path(topic_id: @topic.id, id: bookmark.id), method: :delete, class: 'danger', data: { confirm: 'Are you sure you want to delete this bookmark?' }        
+        - else
+          %small
+            Created by
+            = bookmark.user_name
+        = render partial: 'likes/like', locals: { bookmark: bookmark } 
+  .col-md-8
+    = link_to "Exit", root_path, class: 'btn btn-warning'
+    = link_to "Add a bookmark", new_topic_bookmarks_path(@topic), class: 'btn btn-success'
+    = link_to "Delete Topic", @topic, method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure you want to delete this topic?' }
+

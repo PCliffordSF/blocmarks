@@ -9,7 +9,8 @@
     %p
       = @bookmark.url 
       submitted 
-      time_ago_in_words(= @bookmark.created_at) ago
+      = time_ago_in_words(@bookmark.created_at) 
+      ago
     %small
     - if policy(@bookmark).update?
       = link_to "Edit Bookmark", edit_bookmark_path(@bookmark.id), class: 'btn btn-success'
